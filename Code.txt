@@ -1,0 +1,34 @@
+import { useState } from "react";
+import { FiMenu, FiHome, FiSettings, FiCalendar, FiShoppingCart } from "react-icons/fi";
+
+export default function Sidebar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="flex">
+      {/* Mobile Toggle */}
+      <button className="md:hidden p-4" onClick={() => setIsOpen(!isOpen)}>
+        <FiMenu size={24} />
+      </button>
+
+      {/* Sidebar */}
+      <aside className={`bg-gray-900 text-gray-200 w-64 h-screen p-5 fixed md:relative transform ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 transition-transform duration-200`}>
+        <h2 className="text-lg font-bold mb-6">Neo UI</h2>
+        <ul>
+          <li className="flex items-center p-2 hover:bg-gray-800 rounded">
+            <FiHome className="mr-3" /> Home
+          </li>
+          <li className="flex items-center p-2 hover:bg-gray-800 rounded">
+            <FiCalendar className="mr-3" /> Events
+          </li>
+          <li className="flex items-center p-2 hover:bg-gray-800 rounded">
+            <FiShoppingCart className="mr-3" /> Orders
+          </li>
+          <li className="flex items-center p-2 hover:bg-gray-800 rounded">
+            <FiSettings className="mr-3" /> Settings
+          </li>
+        </ul>
+      </aside>
+    </div>
+  );
+}
